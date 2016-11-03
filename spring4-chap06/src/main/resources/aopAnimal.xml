@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd">
+        
+<aop:config proxy-target-class="true">
+        
+    <!-- 핵심사항( Target ) bean등록 -->
+    <bean id="cat" class="net.madvirus.spring4.chap06.animal.Cat" ></bean>
+    <bean id="dog" class="net.madvirus.spring4.chap06.animal.Dog" ></bean>
+    <bean id="rabbit" class="net.madvirus.spring4.chap06.animal.Rabbit" ></bean>
+  
+ 
+    <!-- 공통관심사항 bean 등록 -->
+    <bean id="myAspect" class="net.madvirus.spring4.chap06.aop.MyAspect" ></bean>
+ 
+    <!-- aop 사용시 config 태그 사용 -->
+    <aop:config>
+ 
+        <!-- aspect = pointcut + advice -->
+        <aop:aspect ref="myAspect">
+ 
+            <!-- 공통관심사항이 적용 될 핵심사항의 경로를 지정 하고 id 부여 -->
+            <aop:pointcut expression="execution(public String *.eat())" id="myPt" />
+ 
+            <!-- advice : 공통관심사항의 구현 코드 + 적용 시점 -->
+            <aop:before method="before" pointcut-ref="myPt"/>
+            <aop:after-throwing method="after_throwing" pointcut-ref="myPt" throwing="th"/>
+            <aop:after-returning method="after_returning" pointcut-ref="myPt" returning="msg"/>
+            <aop:after method="after" pointcut-ref="myPt"/>
+            <!-- <aop:around method="around" pointcut-ref="myPt" /> -->
+        </aop:aspect>
+    </aop:config>
+</beans>

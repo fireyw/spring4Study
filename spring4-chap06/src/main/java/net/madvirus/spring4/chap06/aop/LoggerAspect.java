@@ -15,6 +15,7 @@ public class LoggerAspect {
 	@Before("execution(public * net.madvirus.spring4.chap06.member..*(..))")
 	public void StartLog(JoinPoint joinPoint) throws Throwable{		
 		System.out.println("---start----");
+		System.out.println(joinPoint.getSignature());
 		System.out.println(Arrays.toString(joinPoint.getArgs()));
 		System.out.println("---end----");		
 	}
