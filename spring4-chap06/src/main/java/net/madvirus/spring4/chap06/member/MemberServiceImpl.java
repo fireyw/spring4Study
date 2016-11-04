@@ -14,9 +14,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public String update2(String id, UpdateInfo updateInfo, String msg) {
+	public boolean update2(String id, UpdateInfo updateInfo, String msg) {
 		System.out.println("MemberServiceImpl.update222222222222 () 호출됨");
-		return msg;
+		return true;
 	}
 
 }

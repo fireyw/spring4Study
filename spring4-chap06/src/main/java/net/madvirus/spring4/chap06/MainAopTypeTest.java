@@ -16,7 +16,7 @@ public class MainAopTypeTest {
 		updateInfo.setNewName("최범균");
 		ms.update("madvirus", updateInfo);
 		System.out.println("update2 호출");
-		ms.update2("fireyw", updateInfo, "complete");
+		ms.update2("fireyw", updateInfo, "Add Param");
 		
 		ctx.close();
 	}

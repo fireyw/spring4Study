@@ -16,8 +16,8 @@ public class UpdateMemberInfoTraceAspect {
 	}
 
 	@AfterReturning(pointcut = "args(memberId,info,msg)", returning = "result", argNames="joinPoint,memberId, msg, info, result")
-	public void traceReturn2(JoinPoint joinPoint, String memberId, String msg, UpdateInfo info, String result) {
-		System.out.printf("[TA] 정보 수정2222: 대상회원=%s, 수정정보=%s, 결과=%s, 추가값=%s",
+	public void traceReturn2(JoinPoint joinPoint, String memberId, String msg, UpdateInfo info, boolean result) {
+		System.out.printf("[TA] 정보 수정: 대상회원=%s, 수정정보=%s, 결과=%s, 추가값=%s",
 				memberId, info, result, msg);
 	}
 }

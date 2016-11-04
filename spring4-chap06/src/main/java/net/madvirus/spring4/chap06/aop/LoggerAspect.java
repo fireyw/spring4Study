@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 
 @Aspect
 public class LoggerAspect {
-	private static final Logger logger=LoggerFactory.getLogger(LoggerAspect.class);
 
 	@Before("execution(public * net.madvirus.spring4.chap06.member..*(..))")
 	public void StartLog(JoinPoint joinPoint) throws Throwable{		
